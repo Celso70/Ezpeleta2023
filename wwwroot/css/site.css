@@ -15,4 +15,13 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: brown;
+}
+/* DISEÑO HOME INDEX, BANCAN SHAT? */
+
+.titulo-index {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bolder;
+  border: 1px;
+  color: white;
 }
