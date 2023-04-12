@@ -17,11 +17,17 @@ body {
   margin-bottom: 60px;
   background-color: brown;
 }
-/* DISEÑO HOME INDEX, BANCAN SHAT? */
+/* DISEÑO HOME INDEX*/
 
 .titulo-index {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: bolder;
   border: 1px;
   color: white;
+}
+
+/* DISEÑO REGISTER*/
+
+.datos-register{
+  
 }
