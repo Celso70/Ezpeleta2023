@@ -4,8 +4,15 @@ using Ezpeleta2023.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString2 = builder.Configuration.GetConnectionString("Ezpeleta2023Connection");
+
+builder.Services.AddDbContext<Ezpeleta2023DbContext>(options =>
+    options.UseSqlServer(connectionString2));
+
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 

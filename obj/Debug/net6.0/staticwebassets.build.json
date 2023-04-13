@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4y8np0RQTn0JtLbLdoJexd2vxoSBWjvYm8nYb6YaIGU=",
+  "Hash": "T1+UMF5GoH6RX42JUsby5h3jhb+RTbuRBQHusm9mQBU=",
   "Source": "Ezpeleta2023",
   "BasePath": "_content/Ezpeleta2023",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\repos\\Ezpeleta2023\\wwwroot\\js\\Categoria-1.0.0.js",
+      "SourceId": "Ezpeleta2023",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\repos\\Ezpeleta2023\\wwwroot\\",
+      "BasePath": "_content/Ezpeleta2023",
+      "RelativePath": "js/Categoria-1.0.0.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Categoria-1.0.0.js"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\repos\\Ezpeleta2023\\wwwroot\\js\\site.js",
