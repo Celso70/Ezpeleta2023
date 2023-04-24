@@ -9,4 +9,6 @@ public class Categoria
     public string? Descripcion { get; set; }
 
     public bool Eliminado { get; set; }
+
+    ICollection<SubCategoria>?SubCategorias { get; set; }
 }

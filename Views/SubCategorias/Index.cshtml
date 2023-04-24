@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Modal -->
+<div class="modal fade" id="ModalSubCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="exampleModalLabel">Agregar Sub-Categoria</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="SubCategoriaID" value="0"  />
+        <div>
+            <label class="control-label text-warning">Sub-Categoria</label>
+            <input type="text" class="form-control" id="Descripcion" autocomplete="off" onkeyup="this.value = this.value.toUpperCase()" />
+        </div>
+@* categoria desplegablke *@
+ <div>
+  <label class="control-label text-warning">
+Categoria:
+  </label>
+  @Html.DropDownList("CategoriaID", null, htmlAttributes: new { @class = "form-control" })
+ </div>
+ 
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="submit" class="btn btn-outline-warning" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" onclick="GuardarSubCategoria()" class="btn btn-outline-warning">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+    <h1 class="display-4 text-warning">Sub-Categorias</h1>
+
+      <!-- Button trigger modal -->
+      <div class="mb-2">
+        <button type="submit" onclick="(VaciarFormulario)" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#ModalSubCategoria">
+            Nuevo
+        </button>
+      </div>
+
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th class="text-warning">Descripcion</th>
+            <th class="text-warning">Categoria</th>
+        </tr>
+    </thead>
+        <tbody id="tbody-subcategorias">        
+        </tbody>
+  </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/Scriptsubcategoria.js"></script>
+}

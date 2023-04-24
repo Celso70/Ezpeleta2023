@@ -13,18 +13,17 @@ html {
   min-height: 100%;
 }
 
-body {
+ body {
   margin-bottom: 60px;
-  background-color: brown;
-}
+  background-color: rgb(57, 58, 58);
+} 
 /* DISEÑO HOME INDEX*/
 
-.titulo-index {
+/* .titulo-index {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-weight: bolder;
   border: 1px;
   color: white;
-}
+} */
 
 /* DISEÑO REGISTER*/
 

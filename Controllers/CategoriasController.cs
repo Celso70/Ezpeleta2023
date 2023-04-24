@@ -76,6 +76,19 @@ public class CategoriasController : Controller
         return Json(resultado);
     }
 
+public JsonResult eliminarCategoria(int id,bool valor){
+    bool resultado= false;
+    Categoria? categoria = _contexto.Categorias.Find(id);
+    if (categoria!=null)
+    {
+        categoria.Eliminado= valor;
+        resultado= true;
+        _contexto.SaveChanges();
+    }
+    return Json(resultado);
+    
+}
+
 
    
 }
