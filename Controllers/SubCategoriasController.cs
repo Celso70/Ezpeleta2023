@@ -29,18 +29,19 @@ public class SubCategoriasController : Controller
     public JsonResult BuscarSubCategorias(int subcategoriaID = 0)
     {
         List<VistaSubCategoria> subCategoriasMostrar = new List<VistaSubCategoria>();
-        var subcategorias = _contexto.SubCategorias.ToList();
+        var subcategorias = _contexto.SubCategorias.Include(s => s.Categoria).Where(s => s.Categoria.Eliminado == false).ToList();
 
         if (subcategoriaID > 0) {
             subcategorias = subcategorias.Where(s => s.SubCategoriaID == subcategoriaID).OrderBy(s => s.Descripcion).ToList();
         }
-        foreach (var subCategoria in subcategorias)
+        foreach (var subcategoria in subcategorias)
         {
             var subCategoriaMostrar = new VistaSubCategoria{
-                Descripcion = subCategoria.Descripcion,
-                SubCategoriaID = subCategoria.SubCategoriaID,
-                CategoriaID = subCategoria.CategoriaID,
-                CategoriaDescripcion = subCategoria.Categoria.Descripcion
+                Descripcion = subcategoria.Descripcion,
+                SubCategoriaID = subcategoria.SubCategoriaID,
+                CategoriaID = subcategoria.CategoriaID,
+                CategoriaDescripcion = subcategoria.Categoria.Descripcion,
+                Eliminado = subcategoria.Eliminado
             };
 
             subCategoriasMostrar.Add(subCategoriaMostrar);
@@ -108,5 +109,38 @@ public JsonResult eliminarSubCategoria(int id,bool valor){
     return Json(resultado);
     
 }
+
+public JsonResult DeshabilitarSubCategoria(int SubCategoriaID, int Eliminado)
+    {
+        int resultado = 0;
+        //SE BUSCA EL ID DE LA CATEGORIA EN EL CONTEXTO
+        var subcategoria = _contexto.SubCategorias.Find(SubCategoriaID);
+        //CATEGORIA DIFERENTE DE NULL
+        if (subcategoria != null)
+        {
+            //CATEGORIA.ELIMINAR IGUAL A FALSO SE ELIMINARA. SI YA ESTA ELIMINADA SE RESTAURA
+            if (subcategoria.Eliminado == false)
+            {
+                subcategoria.Eliminado = true;
+                _contexto.SaveChanges();
+
+            }
+            else
+            {
+
+                subcategoria.Eliminado = false;
+                _contexto.SaveChanges();
+                
+
+
+            }
+            //PASA RESULTADO A 1
+            resultado = 1;
+           
+
+        }
+        
+        return Json(resultado);
+    }
 
 }
