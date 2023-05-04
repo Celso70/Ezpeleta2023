@@ -78,12 +78,16 @@ public class CategoriasController : Controller
 
 public JsonResult eliminarCategoria(int id,bool valor){
     bool resultado= false;
-    Categoria? categoria = _contexto.Categorias.Find(id);
+    Categoria categoria = _contexto.Categorias.Find(id);
     if (categoria!=null)
     {
-        categoria.Eliminado= valor;
-        resultado= true;
-        _contexto.SaveChanges();
+        var categoria30 = _contexto.SubCategorias.Where(s => s.CategoriaID == id && s.Eliminado == false).Count();
+        if (categoria30 == 0)
+        {
+            categoria.Eliminado= valor;
+            resultado= true;
+            _contexto.SaveChanges();
+        }
     }
     return Json(resultado);
     

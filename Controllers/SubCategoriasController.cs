@@ -4,9 +4,11 @@ using Ezpeleta2023.Data;
 using Ezpeleta2023.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ezpeleta2023.Controllers;
 
+[Authorize]
 public class SubCategoriasController : Controller
 {
     private readonly ILogger<SubCategoriasController> _logger;
@@ -97,18 +99,18 @@ public class SubCategoriasController : Controller
         return Json(resultado);
     }
 
-public JsonResult eliminarSubCategoria(int id,bool valor){
-    bool resultado= false;
-    SubCategoria? subcategoria = _contexto.SubCategorias.Find(id);
-    if (subcategoria!=null)
-    {
-        subcategoria.Eliminado= valor;
-        resultado= true;
-        _contexto.SaveChanges();
-    }
-    return Json(resultado);
+// public JsonResult eliminarSubCategoria(int id,bool valor){
+//     bool resultado= false;
+//     SubCategoria? subcategoria = _contexto.SubCategorias.Find(id);
+//     if (subcategoria!=null)
+//     {
+//         subcategoria.Eliminado= valor;
+//         resultado= true;
+//         _contexto.SaveChanges();
+//     }
+//     return Json(resultado);
     
-}
+// }
 
 public JsonResult DeshabilitarSubCategoria(int SubCategoriaID, int Eliminado)
     {
@@ -121,8 +123,13 @@ public JsonResult DeshabilitarSubCategoria(int SubCategoriaID, int Eliminado)
             //CATEGORIA.ELIMINAR IGUAL A FALSO SE ELIMINARA. SI YA ESTA ELIMINADA SE RESTAURA
             if (subcategoria.Eliminado == false)
             {
-                subcategoria.Eliminado = true;
-                _contexto.SaveChanges();
+                var servicio30 = _contexto.Servicios.Where(s => s.SubCategoriaID == SubCategoriaID && s.Eliminado == false).Count();
+                if (servicio30 == 0)
+                {
+                    subcategoria.Eliminado = true;
+                    _contexto.SaveChanges();
+                }
+                
 
             }
             else

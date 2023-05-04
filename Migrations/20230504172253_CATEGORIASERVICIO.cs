@@ -4,7 +4,7 @@
 
 namespace Ezpeleta2023.Migrations
 {
-    public partial class Subcategoriasvistasycontrolador : Migration
+    public partial class CATEGORIASERVICIO : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

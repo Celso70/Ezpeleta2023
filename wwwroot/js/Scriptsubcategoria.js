@@ -25,17 +25,17 @@ function BuscarSubCategorias(){
                  $.each(subcategorias, function( index, subcategoria ){
                     //VARIABLES PARA DEFINIR BOTONES Y ESTETICA
                     let botonDeshabilitar = '';
-                    let botones = '<button type="button" onclick="BuscarSubCategoria(' + subcategoria.subCategoriaID +')"class="btn btn-primary btn-sm" style="margin-right:5px" onkeyup="this.value.toUpperCase()">Editar</button>' +
-                    '<button type="button" onclick="DeshabilitarSubCategoria(' + subcategoria.subCategoriaID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
+                    let botones = '<button type="submit" onclick="BuscarSubCategoria(' + subcategoria.subCategoriaID +')"class="btn btn-outline-warning btn-sm" style="margin-right:5px" onkeyup="this.value.toUpperCase()">Editar</button>' +
+                    '<button type="submit" onclick="DeshabilitarSubCategoria(' + subcategoria.subCategoriaID + ',1)" class="btn btn-outline-warning btn-sm">Deshabilitar</button>';
                  //DEFINE SI ESTA ELIMINADA
                 if (subcategoria.eliminado) {
-                    botonDeshabilitar = 'table-danger';
-                    botones = '<button type="button" onclick="DeshabilitarSubCategoria(' + subcategoria.subCategoriaID + ',0)" class="btn btn-warning btn-sm">Activar</button>';
+                    botonDeshabilitar = 'table-warning';
+                    botones = '<button type="submit" onclick="DeshabilitarSubCategoria(' + subcategoria.subCategoriaID + ',0)" class="btn btn-outline-warning btn-sm">Activar</button>';
                 }
                      $("#tbody-subcategorias").append(
                         `<tr class="${botonDeshabilitar}">
-                         <td>${subcategoria.descripcion}</td> 
-                         <td>${subcategoria.categoriaDescripcion}</td>
+                         <td class="text-warning">${subcategoria.descripcion}</td> 
+                         <td class="text-warning">${subcategoria.categoriaDescripcion}</td>
                          <td class="text-center">${botones}</td></tr>`
                         
                         );
@@ -86,11 +86,11 @@ function BuscarSubCategoria(subcategoriaID){
       dataType : 'json',
 
       success : function(subcategorias) {
-         
+            // console.log(subcategorias)
           if (subcategorias.length == 1){
               let subcategoria = subcategorias[0];
               $("#Descripcion").val(subcategoria.Descripcion);
-              $("#SubCategoriaID").val(subcategoria.subcategoriaID);
+              $("#SubCategoriaID").val(subcategoria.subCategoriaID);
               $("#CategoriaID").val(subcategoria.categoriaID);
               $("#ModalSubCategoria").modal("show");
           }
@@ -112,6 +112,7 @@ function GuardarSubCategoria(){
     let descripcion1 = document.getElementById("Descripcion").value;
     let descripcion2 = $("#Descripcion").val();
     let subcategoriaID = $("#SubCategoriaID").val();
+    // console.log(subcategoriaID);
     console.log(descripcion1 +" "+ subcategoriaID )
      $.ajax({
          url : '../../SubCategorias/GuardarSubCategoria',

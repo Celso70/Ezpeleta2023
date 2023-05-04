@@ -51,7 +51,7 @@ $("#tbody-categorias").empty();
             }
             $("#tbody-categorias").append(`
             <tr>
-              <td class="${categoria.eliminado ? 'text-decoration-line-through' : ''}"> 
+              <td class="text-warning ${categoria.eliminado ? 'text-decoration-line-through' : ''}"> 
                 ${categoria.descripcion}
               </td>
             ${botones}

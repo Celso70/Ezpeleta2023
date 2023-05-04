@@ -16,17 +16,28 @@ html {
  body {
   margin-bottom: 60px;
   background-color: rgb(57, 58, 58);
-} 
-/* DISEÑO HOME INDEX*/
+}
 
-/* .titulo-index {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  border: 1px;
-  color: white;
-} */
+.box{
+      position: absolute;
+      width: 100%;
+      overflow: hidden;
+      height: 100%;
+      bottom: -1px;
+      background: linear-gradient(to bottom, #ee0979, #ffa600);
+      z-index: 5;
+}
 
-/* DISEÑO REGISTER*/
+/* DISEÑO TITULOS INDEX*/
 
-.datos-register{
+.texto-servicio{
   
 }
+.texto-categoria{
+  
+}
+.texto-sub-categoria{
+  
+}
+
+

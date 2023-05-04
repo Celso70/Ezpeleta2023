@@ -14,4 +14,6 @@ public class Ezpeleta2023DbContext : DbContext
     public DbSet<Categoria> Categorias { get; set; }
     public DbSet<SubCategoria> SubCategorias { get; set; }
 
+    public DbSet<Servicio> Servicios { get; set; }
+
 }
